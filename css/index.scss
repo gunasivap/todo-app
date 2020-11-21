@@ -1,0 +1,298 @@
+// imported styles
+@import "reset";
+
+// variables
+$primaryBackground: rgb(240, 140, 40);
+
+//mixins
+@mixin head-content {
+    color: white;
+    background-color: rgb(120, 120, 240);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px 40px;
+    position: relative;
+
+    button {
+        color: white;
+        background-color: inherit;
+        font-size: 1.5rem;
+        padding: 5px;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        user-select: none;
+    }
+
+    .fa {
+        display: none;
+        font-size: 1.5rem;
+        position: absolute;
+        right: 20px;
+    }
+}
+
+// base styles
+html,
+body {
+    background-color: $primaryBackground;
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    scroll-behavior: smooth;
+}
+
+li {
+    list-style: none;
+}
+
+.fa {
+    text-shadow: none;
+}
+
+// header styles
+header {
+    color: white;
+    min-height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+        font-size: 2rem;
+    }
+}
+
+
+#clock {
+    position: absolute;
+    right: 100px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 2rem;
+    letter-spacing: 2px;
+
+}
+
+// main styles
+main {
+    color: rgb(60, 60, 60);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 20px 0;
+
+
+}
+
+// task styles
+.task-section {
+    background-color: rgb(240, 220, 200);
+    margin: 10px;
+    width: 35%;
+    min-width: 500px;
+    max-height: 600px;
+}
+
+.task-head {
+    @include head-content;
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+}
+
+#task-container {
+    height: 400px;
+    padding: 20px;
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+.task-li {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    margin: 10px;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    overflow: hidden;
+
+    p {
+        flex-grow: 1;
+        padding: 5px;
+        padding-left: 20px;
+        overflow: auto;
+        cursor: pointer;
+
+        i.fa-check-circle {
+            margin-right: 5px;
+            color: rgb(0, 220, 0);
+        }
+    }
+
+    div {
+        display: flex;
+        flex-direction: column;
+
+        i {
+            color: white;
+            padding: 5px 10px;
+            padding-right: 15px;
+            cursor: pointer;
+            user-select: none;
+
+        }
+
+        .fa-edit {
+            background-color: rgb(40, 40, 240);
+        }
+
+        .fa-trash {
+            background-color: rgb(240, 40, 40);
+        }
+    }
+}
+
+.no-task {
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 2rem;
+}
+
+[data-task-status="complete"] .task {
+    text-decoration: line-through;
+    text-decoration-color: rgb(0, 220, 0);
+}
+
+#task-form {
+    display: flex;
+    padding: 20px;
+
+    input {
+        flex-grow: 1;
+        padding: 5px 20px;
+        font-size: 1.1rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+        border: none;
+        outline: none;
+        border-radius: 10px;
+    }
+
+    button {
+        background-color: inherit;
+        padding: 0 4px;
+        border: none;
+        outline: none;
+
+        .fa-plus-circle {
+            color: rgb(0, 220, 0);
+            font-size: 2.5rem;
+        }
+    }
+}
+
+
+// calendar styles
+.calendar-section {
+    @extend .task-section;
+
+}
+
+.calendar-head {
+    @include head-content;
+
+    form {
+
+        select {
+            color: white;
+            background-color: inherit;
+            padding: 5px;
+            font-size: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+            border: none;
+            outline: none;
+            cursor: pointer;
+        }
+
+        option {
+            color: rgb(60, 60, 60);
+            font-size: 1.1rem;
+        }
+    }
+
+}
+
+.calendar-container {
+    padding: 20px;
+    text-align: center;
+
+    table {
+        width: 100%;
+        font-size: 1.1rem;
+
+        td,
+        th {
+            width: 50px;
+            height: 50px;
+            user-select: none;
+        }
+    }
+}
+
+.day {
+    cursor: pointer;
+    border-radius: 5px;
+
+}
+
+.day:hover {
+    background-color: white;
+}
+
+.day.active {
+    color: white;
+    background-color: rgb(0, 220, 0);
+}
+
+.today {
+    border: 2px solid rgb(10, 200, 10);
+}
+
+@media screen and (max-width: 720px) {
+    header {
+        display: none;
+    }
+
+    .task-head,
+    .calendar-head {
+        .fa {
+            display: inline-block;
+        }
+    }
+
+    .task-section {
+        margin: 0;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+
+        #task-container {
+            padding: 10px;
+        }
+
+        #task-form {
+            padding: 10px;
+        }
+    }
+
+    .calendar-section {
+        display: none;
+    }
+}

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Todo App</title>
+
+	<!-- meta data-->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- fonts -->
+	<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open Sans'>
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+	<!-- static assets -->
+	<link rel="stylesheet" href="css/index.css">
+	<script defer src="js/index.js"></script>
+</head>
+
+<body>
+	<header>
+		<h1>Todo App</h1>
+		<div id="clock"></div>
+	</header>
+
+	<main>
+		<!-- Tasks -->
+		<section class="task-section">
+			<div class="task-head">
+				<button id="prev-day">&#10094;</button>
+				<h2>Tasks</h2>
+				<button id="next-day">&#10095;</button>
+				<i id="calendar-toggle" class="fa fa-calendar"></i>
+			</div>
+
+			<ul id="task-container"></ul>
+
+			<form id="task-form">
+				<input id="task-input" type="text" placeholder="Enter Your Tasks" autocomplete="off" autofocus
+					required />
+				<button id="task-btn" type="submit"><i class="fa fa-plus-circle" aria-hidden="true"></i></i></button>
+			</form>
+		</section>
+
+		<!-- calender -->
+		<section class="calendar-section">
+
+			<div class="calendar-head">
+				<button id="previous">&#10094;</button>
+
+				<form class="">
+					<select name="month" id="month"></select>
+					<select name="year" id="year"></select>
+				</form>
+
+				<button id="next">&#10095;</button>
+
+				<i id="task-toggle" class="fa fa-tasks"></i>
+
+			</div>
+
+			<div class="calendar-container">
+				<table class="calendar-table">
+					<thead>
+						<tr>
+							<th>Sun</th>
+							<th>Mon</th>
+							<th>Tue</th>
+							<th>Wed</th>
+							<th>Thu</th>
+							<th>Fri</th>
+							<th>Sat</th>
+						</tr>
+					</thead>
+
+					<tbody id="calendar-body" class="days-container"></tbody>
+				</table>
+			</div>
+		</section>
+	</main>
+</body>
+
+<!-- task template -->
+<template id="task-template">
+	<li class="task-li">
+		<p>
+			<i class="status check fa"></i>
+			<span class="task check"></span>
+		</p>
+		<div>
+			<i class="fa fa-edit"></i>
+			<i class="fa fa-trash"></i>
+		</div>
+	</li>
+</template>
+
+</html>

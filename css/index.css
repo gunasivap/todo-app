@@ -1,0 +1,339 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  max-width: 100vw;
+}
+
+html,
+body {
+  background-color: #f08c28;
+  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+  scroll-behavior: smooth;
+}
+
+li {
+  list-style: none;
+}
+
+.fa {
+  text-shadow: none;
+}
+
+header {
+  color: white;
+  min-height: 80px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+header h1 {
+  font-size: 2rem;
+}
+
+#clock {
+  position: absolute;
+  right: 100px;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 2rem;
+  letter-spacing: 2px;
+}
+
+main {
+  color: #3c3c3c;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin: 20px 0;
+}
+
+.task-section, .calendar-section {
+  background-color: #f0dcc8;
+  margin: 10px;
+  width: 35%;
+  min-width: 500px;
+  max-height: 600px;
+}
+
+.task-head {
+  color: white;
+  background-color: #7878f0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 20px;
+  position: relative;
+}
+
+.task-head button {
+  color: white;
+  background-color: inherit;
+  font-size: 1.5rem;
+  padding: 5px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.task-head .fa {
+  display: none;
+  font-size: 1.5rem;
+  position: absolute;
+  right: 20px;
+}
+
+.task-head h2 {
+  font-size: 1.5rem;
+}
+
+#task-container {
+  height: 400px;
+  padding: 20px;
+  overflow: auto;
+}
+
+#task-container::-webkit-scrollbar {
+  display: none;
+}
+
+.task-li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: white;
+  margin: 10px;
+  font-size: 1.2rem;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.task-li p {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  padding: 5px;
+  padding-left: 20px;
+  overflow: auto;
+  cursor: pointer;
+}
+
+.task-li p i.fa-check-circle {
+  margin-right: 5px;
+  color: #00dc00;
+}
+
+.task-li div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.task-li div i {
+  color: white;
+  padding: 5px 10px;
+  padding-right: 15px;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.task-li div .fa-edit {
+  background-color: #2828f0;
+}
+
+.task-li div .fa-trash {
+  background-color: #f02828;
+}
+
+.no-task {
+  color: white;
+  padding: 20px;
+  text-align: center;
+  font-size: 2rem;
+}
+
+[data-task-status="complete"] .task {
+  text-decoration: line-through;
+  -webkit-text-decoration-color: #00dc00;
+          text-decoration-color: #00dc00;
+}
+
+#task-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 20px;
+}
+
+#task-form input {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  padding: 5px 20px;
+  font-size: 1.1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+  border: none;
+  outline: none;
+  border-radius: 10px;
+}
+
+#task-form button {
+  background-color: inherit;
+  padding: 0 4px;
+  border: none;
+  outline: none;
+}
+
+#task-form button .fa-plus-circle {
+  color: #00dc00;
+  font-size: 2.5rem;
+}
+
+.calendar-head {
+  color: white;
+  background-color: #7878f0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 20px;
+  position: relative;
+}
+
+.calendar-head button {
+  color: white;
+  background-color: inherit;
+  font-size: 1.5rem;
+  padding: 5px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.calendar-head .fa {
+  display: none;
+  font-size: 1.5rem;
+  position: absolute;
+  right: 20px;
+}
+
+.calendar-head form select {
+  color: white;
+  background-color: inherit;
+  padding: 5px;
+  font-size: 1.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.calendar-head form option {
+  color: #3c3c3c;
+  font-size: 1.1rem;
+}
+
+.calendar-container {
+  padding: 20px;
+  text-align: center;
+}
+
+.calendar-container table {
+  width: 100%;
+  font-size: 1.1rem;
+}
+
+.calendar-container table td,
+.calendar-container table th {
+  width: 50px;
+  height: 50px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.day {
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.day:hover {
+  background-color: white;
+}
+
+.day.active {
+  color: white;
+  background-color: #00dc00;
+}
+
+.today {
+  border: 2px solid #0ac80a;
+}
+
+@media screen and (max-width: 720px) {
+  header {
+    display: none;
+  }
+  .task-head .fa,
+  .calendar-head .fa {
+    display: inline-block;
+  }
+  .task-section, .calendar-section {
+    margin: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+  }
+  .task-section #task-container, .calendar-section #task-container {
+    padding: 10px;
+  }
+  .task-section #task-form, .calendar-section #task-form {
+    padding: 10px;
+  }
+  .calendar-section {
+    display: none;
+  }
+}
+/*# sourceMappingURL=index.css.map */
