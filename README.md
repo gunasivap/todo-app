@@ -1,2 +1,3 @@
 # todo-app
-My Advanced Todo App with day calendar with html, css, js
+My advanced todo app with day calendar using html, css, javascript.
+youtube demo link - https://youtu.be/_ojAusOVb24
