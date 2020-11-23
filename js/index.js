@@ -129,18 +129,27 @@ const myTasks = storedTasks || {}
 // render task list
 const taskContainer = document.querySelector("#task-container")
 const taskTemplate = document.querySelector("#task-template")
+const taskCount = document.querySelector("#task-count")
+
+function renderTaskCount(x, y) {
+    taskCount.innerHTML = `(${x}/${y})`
+    console.log(myTasks)
+}
 
 function renderTaskList() {
     taskContainer.innerHTML = ""
     let tasks = myTasks[dayId]
+    let total = (myTasks[dayId]) ? Object.keys(tasks).length : 0
+    let completed = 0
 
-    if (Object.keys(tasks).length === 0) {
+    if (!total) {
         const noTask = document.createElement("li")
         noTask.classList.add("no-task")
         noTask.innerHTML = "0 Task"
         taskContainer.appendChild(noTask)
 
     } else {
+
         for (let taskObj in tasks) {
             const taskClone = taskTemplate.content.cloneNode(true)
             const taskEl = taskClone.querySelector(".task-li")
@@ -149,14 +158,18 @@ function renderTaskList() {
 
             const tempBool = tasks[taskObj].status === "incomplete"
             const classVal = (tempBool) ? "fa-circle-thin" : "fa-check-circle"
+            completed = (tempBool) ? completed : completed + 1
 
             taskEl.dataset.taskId = taskObj
             taskEl.dataset.taskStatus = tasks[taskObj].status
             taskStatus.classList.add(classVal)
             task.innerHTML = tasks[taskObj].task
+
             taskContainer.appendChild(taskClone)
         }
+
     }
+    renderTaskCount(completed, total)
 }
 
 function saveTasks() {
@@ -204,7 +217,12 @@ const taskInput = document.querySelector("#task-input")
 
 function addTasks() {
     const taskValue = taskInput.value
-    if (taskValue === "") return
+    if (taskValue === "") {
+        alert("please input something")
+        return
+    }
+
+    myTasks[dayId] = myTasks[dayId] || {}
     taskId = taskId || new Date().getTime()
 
     myTasks[dayId][taskId] = {
@@ -243,8 +261,7 @@ function changeDayTask(day) {
     // intiateTasksList
     const currentDay = parseInt(day)
     dayId = new Date(currentYear, currentMonth, currentDay).getTime()
-    myTasks[dayId] = myTasks[dayId] || {}
-
+    
     renderTaskList()
 }
 
@@ -256,20 +273,3 @@ const prevDay = document.querySelector("#prev-day")
 const nextDay = document.querySelector("#next-day")
 prevDay.onclick = () => changeDayTask(selectedDay = selectedDay - 1)
 nextDay.onclick = () => changeDayTask(selectedDay = selectedDay + 1)
-
-
-// mobile view
-const calendarToggle = document.querySelector("#calendar-toggle")
-const taskToggle = document.querySelector("#task-toggle")
-const calendarSection = document.querySelector(".calendar-section")
-const taskSection = document.querySelector(".task-section")
-
-calendarToggle.onclick = () => {
-    calendarSection.style.display = "block"
-    taskSection.style.display = "none"
-}
-
-taskToggle.onclick = () => {
-    taskSection.style.display = "block"
-    calendarSection.style.display = "none"
-}

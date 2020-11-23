@@ -97,13 +97,6 @@ main {
           user-select: none;
 }
 
-.task-head .fa {
-  display: none;
-  font-size: 1.5rem;
-  position: absolute;
-  right: 20px;
-}
-
 .task-head h2 {
   font-size: 1.5rem;
 }
@@ -249,13 +242,6 @@ main {
           user-select: none;
 }
 
-.calendar-head .fa {
-  display: none;
-  font-size: 1.5rem;
-  position: absolute;
-  right: 20px;
-}
-
 .calendar-head form select {
   color: white;
   background-color: inherit;
@@ -311,29 +297,15 @@ main {
 }
 
 @media screen and (max-width: 720px) {
-  header {
+  #clock {
     display: none;
   }
-  .task-head .fa,
-  .calendar-head .fa {
-    display: inline-block;
+  main {
+    margin: 0;
   }
   .task-section, .calendar-section {
-    margin: 0;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-  }
-  .task-section #task-container, .calendar-section #task-container {
-    padding: 10px;
-  }
-  .task-section #task-form, .calendar-section #task-form {
-    padding: 10px;
-  }
-  .calendar-section {
-    display: none;
+    margin: 10px 0;
+    width: 100vh;
   }
 }
 /*# sourceMappingURL=index.css.map */
