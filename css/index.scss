@@ -253,6 +253,7 @@ main {
     border: 2px solid rgb(10, 200, 10);
 }
 
+// responsive media queries
 @media screen and (max-width: 720px) {
     #clock {
         display: none;

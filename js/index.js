@@ -20,7 +20,7 @@ const prevBtn = document.querySelector("#previous")
 const monthSelect = document.querySelector("#month")
 const yearSelect = document.querySelector("#year")
 
-// create goto select options 
+// create form select options 
 function createMonths() {
     for (let i = 0; i < months.length; i++) {
         const option = document.createElement("option")
@@ -84,7 +84,7 @@ function renderCalendar(month, year) {
     }
 }
 
-// change calendar date
+// change calendar date by form select option
 nextBtn.onclick = () => next()
 prevBtn.onclick = () => previous()
 monthSelect.onchange = () => jump()
@@ -126,7 +126,7 @@ renderCalendar(currentMonth, currentYear)
 const storedTasks = JSON.parse(localStorage.getItem("storedTasks"))
 const myTasks = storedTasks || {}
 
-// render task list
+// render task list and task counts
 const taskContainer = document.querySelector("#task-container")
 const taskTemplate = document.querySelector("#task-template")
 const taskCount = document.querySelector("#task-count")
@@ -172,6 +172,7 @@ function renderTaskList() {
     renderTaskCount(completed, total)
 }
 
+// save task variable to local storage
 function saveTasks() {
     localStorage.setItem("storedTasks", JSON.stringify(myTasks))
 }
@@ -237,7 +238,7 @@ function addTasks() {
     taskContainer.scrollBy(0, 100);
 }
 
-// change selected day and task
+// change selected day and task by calender click
 var selectedDay
 var dayId
 
@@ -261,7 +262,7 @@ function changeDayTask(day) {
     // intiateTasksList
     const currentDay = parseInt(day)
     dayId = new Date(currentYear, currentMonth, currentDay).getTime()
-    
+
     renderTaskList()
 }
 
@@ -269,6 +270,7 @@ function changeDayTask(day) {
 selectedDay = today.getDate()
 changeDayTask(selectedDay)
 
+// change day and task by task nav arrow
 const prevDay = document.querySelector("#prev-day")
 const nextDay = document.querySelector("#next-day")
 prevDay.onclick = () => changeDayTask(selectedDay = selectedDay - 1)
